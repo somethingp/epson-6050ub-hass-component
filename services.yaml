@@ -7,3 +7,23 @@ select_cmode:
     cmode:
       description: Name of Cmode
       example: "cinema"
+
+select_picture_memory:
+  description: Select Picture memory of Epson projector
+  fields:
+    entity_id:
+      description: Name of projector
+      example: "media_player.epson_projector"
+    cmode:
+      description: Which memory?
+      example: "3"
+
+select_lens_memory:
+  description: Select Lens memory of Epson projector
+  fields:
+    entity_id:
+      description: Name of projector
+      example: "media_player.epson_projector"
+    cmode:
+      description: Which lens memory?
+      example: "2"
