@@ -1,7 +1,7 @@
 """Support for Epson projector."""
 import logging
 
-import .epson_module as epson
+import epson_module as epson
 
 import voluptuous as vol
 
