@@ -1,7 +1,7 @@
 {
-    "domain": "epson",
-    "name": "Epson",
-    "documentation": "https://www.home-assistant.io/integrations/epson",
-    "requirements": ["epson-projector==0.1.3"],
-    "codeowners": []
-  }
+  "domain": "epson6050",
+  "name": "Epson 6050UB",
+  "documentation": "https://github.com/somethingp/epson-6050ub-hass-component",
+  "requirements": ["aiohttp>=3.3.0"],
+  "codeowners": ["Prakhar Bansal"]
+}
