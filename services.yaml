@@ -14,9 +14,9 @@ select_picture_memory:
     entity_id:
       description: Name of projector
       example: "media_player.epson_projector"
-    cmode:
+    memory_num:
       description: Which memory?
-      example: "3"
+      example: "memory_1"
 
 select_lens_memory:
   description: Select Lens memory of Epson projector
@@ -24,6 +24,6 @@ select_lens_memory:
     entity_id:
       description: Name of projector
       example: "media_player.epson_projector"
-    cmode:
+    lp_memory_num:
       description: Which lens memory?
-      example: "2"
+      example: "memory_1"

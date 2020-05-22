@@ -1,8 +1,12 @@
 """Constants for the Epson projector component."""
 DOMAIN = "epson"
 SERVICE_SELECT_CMODE = "select_cmode"
+SERVICE_SELECT_MEMORY = "select_picture_memory"
+SERVICE_SELECT_LP_MEMORY = "select_lens_memory"
 
 ATTR_CMODE = "cmode"
+ATTR_MEMORY = "memory_num"
+ATTR_LP_MEMORY = "lp_memory_num"
 
 DATA_EPSON = "epson"
 DEFAULT_NAME = "EPSON Projector"
@@ -42,6 +46,16 @@ MEMORY_7 = "MEMORY_7"
 MEMORY_8 = "MEMORY_8"
 MEMORY_9 = "MEMORY_9"
 MEMORY_10 = "MEMORY_10"
+LP_MEMORY_1 = "LP_MEMORY_1"
+LP_MEMORY_2 = "LP_MEMORY_2"
+LP_MEMORY_3 = "LP_MEMORY_3"
+LP_MEMORY_4 = "LP_MEMORY_4"
+LP_MEMORY_5 = "LP_MEMORY_5"
+LP_MEMORY_6 = "LP_MEMORY_6"
+LP_MEMORY_7 = "LP_MEMORY_7"
+LP_MEMORY_8 = "LP_MEMORY_8"
+LP_MEMORY_9 = "LP_MEMORY_9"
+LP_MEMORY_10 = "LP_MEMORY_10"
 BUSY = 2
 
 EPSON_CODES = {
@@ -101,7 +115,17 @@ EPSON_KEY_COMMANDS = {
     "MEMORY_7": [('POPMEM', '02 07')],
     "MEMORY_8": [('POPMEM', '02 08')],
     "MEMORY_9": [('POPMEM', '02 09')],
-    "MEMORY_10": [('POPMEM', '02 0A')]
+    "MEMORY_10": [('POPMEM', '02 0A')],
+    "LP_MEMORY_1": [('POPLP', '01')],
+    "LP_MEMORY_2": [('POPLP', '02')],
+    "LP_MEMORY_3": [('POPLP', '03')],
+    "LP_MEMORY_4": [('POPLP', '04')],
+    "LP_MEMORY_5": [('POPLP', '05')],
+    "LP_MEMORY_6": [('POPLP', '06')],
+    "LP_MEMORY_7": [('POPLP', '07')],
+    "LP_MEMORY_8": [('POPLP', '08')],
+    "LP_MEMORY_9": [('POPLP', '09')],
+    "LP_MEMORY_10": [('POPLP', '0A')]
 }
 
 TIMEOUT_TIMES = {
@@ -176,4 +200,30 @@ CMODE_LIST_SET = {
     'theatre': 'CMODE_THEATRE', 'Theatre': 'CMODE_THEATRE',
     'theatre black': 'CMODE_THEATREBLACK',
     'theatre black 2': 'CMODE_THEATREBLACK2'
+}
+
+MEMORY_LIST_SET = {
+    'memory_1': 'MEMORY_1', 'Memory 1': 'MEMORY_1',
+    'memory_2': 'MEMORY_2', 'Memory 2': 'MEMORY_2',
+    'memory_3': 'MEMORY_3', 'Memory 3': 'MEMORY_3',
+    'memory_4': 'MEMORY_4', 'Memory 4': 'MEMORY_4',
+    'memory_5': 'MEMORY_5', 'Memory 5': 'MEMORY_5',
+    'memory_6': 'MEMORY_6', 'Memory 6': 'MEMORY_6',
+    'memory_7': 'MEMORY_7', 'Memory 7': 'MEMORY_7',
+    'memory_8': 'MEMORY_8', 'Memory 8': 'MEMORY_8',
+    'memory_9': 'MEMORY_9', 'Memory 9': 'MEMORY_9',
+    'memory_10': 'MEMORY_10', 'Memory 10': 'MEMORY_10',
+}
+
+LP_MEMORY_LIST_SET = {
+    'memory_1': 'LP_MEMORY_1', 'Memory 1': 'LP_MEMORY_1',
+    'memory_2': 'LP_MEMORY_2', 'Memory 2': 'LP_MEMORY_2',
+    'memory_3': 'LP_MEMORY_3', 'Memory 3': 'LP_MEMORY_3',
+    'memory_4': 'LP_MEMORY_4', 'Memory 4': 'LP_MEMORY_4',
+    'memory_5': 'LP_MEMORY_5', 'Memory 5': 'LP_MEMORY_5',
+    'memory_6': 'LP_MEMORY_6', 'Memory 6': 'LP_MEMORY_6',
+    'memory_7': 'LP_MEMORY_7', 'Memory 7': 'LP_MEMORY_7',
+    'memory_8': 'LP_MEMORY_8', 'Memory 8': 'LP_MEMORY_8',
+    'memory_9': 'LP_MEMORY_9', 'Memory 9': 'LP_MEMORY_9',
+    'memory_10': 'LP_MEMORY_10', 'Memory 10': 'LP_MEMORY_10',
 }

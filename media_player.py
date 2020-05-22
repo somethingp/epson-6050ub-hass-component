@@ -1,29 +1,8 @@
 """Support for Epson projector."""
 import logging
 
-import epson_projector as epson
-from epson_projector.const import (
-    BACK,
-    BUSY,
-    CMODE,
-    CMODE_LIST,
-    CMODE_LIST_SET,
-    DEFAULT_SOURCES,
-    EPSON_CODES,
-    FAST,
-    INV_SOURCES,
-    MUTE,
-    PAUSE,
-    PLAY,
-    POWER,
-    SOURCE,
-    SOURCE_LIST,
-    TURN_OFF,
-    TURN_ON,
-    VOL_DOWN,
-    VOL_UP,
-    VOLUME,
-)
+import .epson_module as epson
+
 import voluptuous as vol
 
 from homeassistant.components.media_player import PLATFORM_SCHEMA, MediaPlayerEntity
@@ -55,6 +34,52 @@ from .const import (
     DOMAIN,
     SERVICE_SELECT_CMODE,
     SUPPORT_CMODE,
+    BACK,
+    BUSY,
+    CMODE,
+    CMODE_LIST,
+    CMODE_LIST_SET,
+    DEFAULT_SOURCES,
+    EPSON_CODES,
+    FAST,
+    INV_SOURCES,
+    MUTE,
+    PAUSE,
+    PLAY,
+    POWER,
+    SOURCE,
+    SOURCE_LIST,
+    TURN_OFF,
+    TURN_ON,
+    VOL_DOWN,
+    VOL_UP,
+    VOLUME,
+    MEMORY_1, 
+    MEMORY_2, 
+    MEMORY_3, 
+    MEMORY_4, 
+    MEMORY_5, 
+    MEMORY_6, 
+    MEMORY_7, 
+    MEMORY_8, 
+    MEMORY_9, 
+    MEMORY_10,
+    MEMORY_LIST_SET,
+    SERVICE_SELECT_MEMORY,
+    LP_MEMORY_1, 
+    LP_MEMORY_2, 
+    LP_MEMORY_3, 
+    LP_MEMORY_4, 
+    LP_MEMORY_5, 
+    LP_MEMORY_6, 
+    LP_MEMORY_7, 
+    LP_MEMORY_8, 
+    LP_MEMORY_9, 
+    LP_MEMORY_10,
+    LP_MEMORY_LIST_SET,
+    SERVICE_SELECT_LP_MEMORY,
+    ATTR_MEMORY,
+    ATTR_LP_MEMORY
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -114,13 +139,21 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             if service.service == SERVICE_SELECT_CMODE:
                 cmode = service.data.get(ATTR_CMODE)
                 await device.select_cmode(cmode)
+            elif service.service == SERVICE_SELECT_MEMORY:
+                memory_num = service.data.get(ATTR_MEMORY)
+                await device.select_memory(memory_num)
+            elif service.service == SERVICE_SELECT_LP_MEMORY:
+                lp_memory_num = service.data.get(ATTR_LP_MEMORY)
+                await device.select_lp_memory(lp_memory_num)
             device.async_schedule_update_ha_state(True)
 
     epson_schema = MEDIA_PLAYER_SCHEMA.extend(
-        {vol.Required(ATTR_CMODE): vol.All(cv.string, vol.Any(*CMODE_LIST_SET))}
+        {vol.Required(ATTR_CMODE): vol.All(cv.string, vol.Any(*CMODE_LIST_SET)),
+        vol.Required(ATTR_MEMORY): vol.All(cv.string, vol.Any(*MEMORY_LIST_SET)),
+        vol.Required(ATTR_LP_MEMORY): vol.All(cv.string, vol.Any(*LP_MEMORY_LIST_SET))}
     )
     hass.services.async_register(
-        DOMAIN, SERVICE_SELECT_CMODE, async_service_handler, schema=epson_schema
+        DOMAIN, SERVICE_SELECT_CMODE, SERVICE_SELECT_MEMORY, SERVICE_SELECT_LP_MEMORY, async_service_handler, schema=epson_schema
     )
 
 
@@ -198,6 +231,14 @@ class EpsonProjector(MediaPlayerEntity):
     async def select_cmode(self, cmode):
         """Set color mode in Epson."""
         await self._projector.send_command(CMODE_LIST_SET[cmode])
+    
+    async def select_memory(self, memory_num):
+        """Set picture memory in Epson."""
+        await self._projector.send_command(MEMORY_LIST_SET[memory_num])
+    
+    async def select_lp_memory(self, lp_memory_num):
+        """Set lens position memory in Epson."""
+        await self._projector.send_command(LP_MEMORY_LIST_SET[lp_memory_num])
 
     async def async_select_source(self, source):
         """Select input source."""
